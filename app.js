@@ -57,6 +57,15 @@ var server = http.createServer(function(request, response){
       response.write(contents);
       response.end();
     });
+  } else if(request.url === '/cars/new'){
+
+    // /cars/new =>
+    //  simple html page with simple form
+    fs.readFile('views/cars_new.html', 'utf8', function(error, contents){
+      response.writeHead(200, {'Content-Type': 'text/html'});
+      response.write(contents);
+      response.end();
+    });
   }else{
     response.writeHead(404);
     response.end(`not found :O ${request.url}`);
